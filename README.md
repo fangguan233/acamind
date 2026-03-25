@@ -1,4 +1,5 @@
-# Acamind（知境）
+# Acamind（知境）v0.1
+当前只是一个demo版本，实现了大部分核心功能
 
 Acamind 是一个**基于 Chainlit 二次开发**的学术研究助手项目。
 
