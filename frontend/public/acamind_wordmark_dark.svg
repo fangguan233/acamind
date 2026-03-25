@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="100%" height="100%" role="img" aria-label="Acamind Full Wordmark - Dark">
+  <defs>
+    <linearGradient id="fluentBlueWord" x1="10%" y1="90%" x2="90%" y2="10%">
+      <stop offset="0%" stop-color="#0942B4"/>
+      <stop offset="45%" stop-color="#0B75E6"/>
+      <stop offset="100%" stop-color="#16C8F2"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(40 0)">
+    <g transform="translate(-10, -2) scale(0.9)">
+      <path fill="url(#fluentBlueWord)" d="M45.58 49.68a4 4 0 0 1-5.25-2.1L38.79 44H36a4 4 0 0 1-.61-7.94L32 28.15 23.68 47.58a4 4 0 1 1-7.35-3.15l12-28a4 4 0 0 1 7.35 0l9.43 22v0l2.56 6a4 4 0 0 1-2.09 5.25Z"/>
+    </g>
+
+    <text x="34" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="800" fill="#E2E8F0" letter-spacing="-0.5">camind</text>
+
+    <line x1="144" y1="20" x2="144" y2="44" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
+
+    <text x="156" y="40" font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="18" font-weight="600" fill="#CBD5E1" letter-spacing="2">知境</text>
+
+    <path fill="url(#fluentBlueWord)" d="M 132 10 Q 132 14 128 14 Q 132 14 132 18 Q 132 14 136 14 Q 132 14 132 10 Z"/>
+  </g>
+</svg>

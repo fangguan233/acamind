@@ -1,0 +1,343 @@
+/* Acamind: smoother collapsible + translation UX + non-OA PDF upload callout */
+
+@keyframes acamind-shimmer {
+  0% {
+    background-position: -100% top;
+  }
+
+  to {
+    background-position: 250% top;
+  }
+}
+
+.sci-collapse__summary {
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.sci-collapse__summary::-webkit-details-marker {
+  display: none;
+}
+
+.sci-collapse__summary::after {
+  content: "";
+  width: 0.46rem;
+  height: 0.46rem;
+  flex: 0 0 auto;
+  border-right: 2px solid hsl(var(--muted-foreground));
+  border-bottom: 2px solid hsl(var(--muted-foreground));
+  transform: rotate(45deg);
+  transition: transform 0.22s ease;
+  opacity: 0.85;
+  margin-right: 0.15rem;
+}
+
+.sci-collapse[open] > .sci-collapse__summary::after {
+  transform: rotate(225deg);
+}
+
+.sci-collapse > .sci-collapse__content,
+.sci-collapse:not([open]) > .sci-collapse__content {
+  display: block !important;
+}
+
+.sci-collapse__content {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-3px);
+  pointer-events: none;
+  transition:
+    max-height 0.26s ease,
+    margin-top 0.22s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  will-change: max-height, opacity, transform;
+}
+
+.sci-collapse[open] > .sci-collapse__content {
+  margin-top: 0.75rem;
+  max-height: 420rem;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sci-collapse__inner {
+  overflow: hidden;
+}
+
+.sci-paper-item {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sci-paper-item--open {
+  border-color: hsl(var(--ring) / 0.35);
+  box-shadow: 0 0 0 1px hsl(var(--ring) / 0.18);
+}
+
+.sci-paper-item:has(.sci-collapse[open]) {
+  border-color: hsl(var(--ring) / 0.35);
+  box-shadow: 0 0 0 1px hsl(var(--ring) / 0.18);
+}
+
+.sci-paper-item.sci-paper-item--open-live {
+  border-color: hsl(var(--ring) / 0.35);
+  box-shadow: 0 0 0 1px hsl(var(--ring) / 0.18);
+}
+
+.sci-paper-item--translating {
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.22);
+}
+
+.sci-paper-action-link {
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.sci-zh-text {
+  color: hsl(var(--foreground));
+}
+
+.sci-zh-placeholder {
+  color: hsl(var(--muted-foreground));
+  opacity: 0.9;
+}
+
+.sci-paper-item--translating .sci-zh-placeholder {
+  display: inline-block;
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.45rem;
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--muted) / 0.18),
+    hsl(var(--muted) / 0.5),
+    hsl(var(--muted) / 0.18)
+  );
+  background-size: 250% 100%;
+  animation: acamind-shimmer 1.15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sci-collapse__summary::after {
+    transition: none;
+  }
+
+  .sci-collapse__content,
+  .sci-collapse[open] .sci-collapse__content,
+  .sci-paper-item,
+  .sci-paper-action-link {
+    transition: none;
+  }
+
+  .sci-paper-item--translating .sci-zh-placeholder {
+    animation: none;
+  }
+}
+
+/* Acamind: prominent PDF upload callout (non-OA deep-read) */
+
+.sci-upload-callout {
+  margin: 0.85rem 0;
+  padding: 0.95rem 1rem;
+  border: 1px solid hsl(var(--primary) / 0.22);
+  border-left: 4px solid hsl(var(--primary));
+  border-radius: 0.85rem;
+  background: linear-gradient(
+    180deg,
+    hsl(var(--primary) / 0.06),
+    hsl(var(--card))
+  );
+}
+
+.sci-upload-callout__title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.sci-upload-callout__meta {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: hsl(var(--muted-foreground));
+  word-break: break-word;
+}
+
+.sci-upload-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.55rem;
+  border: 1px solid hsl(var(--primary) / 0.28);
+  background: hsl(var(--primary) / 0.08);
+  color: hsl(var(--primary)) !important;
+  font-weight: 650;
+  font-size: 0.78rem;
+  text-decoration: none !important;
+}
+
+.sci-upload-link:hover {
+  background: hsl(var(--primary) / 0.12);
+  text-decoration: none !important;
+}
+
+.sci-upload-callout__body {
+  margin-top: 0.55rem;
+  font-size: 0.92rem;
+  color: hsl(var(--foreground));
+  line-height: 1.55;
+}
+
+.sci-upload-callout__reason {
+  margin-top: 0.6rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px dashed hsl(var(--border));
+  border-radius: 0.75rem;
+  background: hsl(var(--muted) / 0.35);
+  color: hsl(var(--muted-foreground));
+  font-size: 0.85rem;
+  line-height: 1.55;
+  word-break: break-word;
+}
+
+.sci-upload-callout__actions {
+  margin-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.sci-upload-btn {
+  appearance: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  min-height: 2.25rem;
+  border-radius: 0.75rem;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground)) !important;
+  border: 1px solid hsl(var(--primary));
+  font: inherit;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none !important;
+  box-shadow: 0 10px 22px hsl(var(--primary) / 0.22);
+  transition:
+    transform 0.12s ease,
+    filter 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.sci-upload-btn:hover {
+  filter: brightness(1.04);
+  box-shadow: 0 12px 26px hsl(var(--primary) / 0.28);
+  text-decoration: none !important;
+}
+
+.sci-upload-btn:active {
+  transform: translateY(1px);
+}
+
+.sci-upload-btn:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+}
+
+.sci-upload-btn--secondary {
+  background: transparent !important;
+  color: hsl(var(--muted-foreground)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  box-shadow: none;
+}
+
+.sci-upload-btn--secondary:hover {
+  filter: none;
+  background: hsl(var(--muted) / 0.25) !important;
+}
+
+/* Optional: nudge user towards the clip icon in the composer */
+#upload-button.sci-upload-flash,
+#upload-button-loading.sci-upload-flash {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 3px;
+  border-radius: 0.65rem;
+}
+
+/* Acamind: DeepRead PDF dock scrollbar polish */
+.acamind-pdf-scroll {
+  color-scheme: light dark;
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.42) hsl(var(--muted) / 0.12);
+}
+
+.acamind-pdf-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.acamind-pdf-scroll::-webkit-scrollbar-track,
+.acamind-pdf-scroll::-webkit-scrollbar-corner {
+  background: hsl(var(--muted) / 0.12);
+}
+
+.acamind-pdf-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 2px solid hsl(var(--muted) / 0.12);
+  background: hsl(var(--muted-foreground) / 0.45);
+}
+
+.acamind-pdf-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.58);
+}
+
+.acamind-pdf-scroll::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.dark .acamind-pdf-scroll {
+  color-scheme: dark;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.52) hsl(var(--muted) / 0.24);
+}
+
+.dark .acamind-pdf-scroll::-webkit-scrollbar-track,
+.dark .acamind-pdf-scroll::-webkit-scrollbar-corner {
+  background: hsl(var(--muted) / 0.24);
+}
+
+.dark .acamind-pdf-scroll::-webkit-scrollbar-thumb {
+  border-color: hsl(var(--muted) / 0.24);
+  background: hsl(var(--muted-foreground) / 0.52);
+}
+
+.dark .acamind-pdf-scroll::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.68);
+}
+
+/* Hide chat-area scrollbar (still scrollable via wheel/touch/keyboard). */
+.acamind-chat-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.acamind-chat-scroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}

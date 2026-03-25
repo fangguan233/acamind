@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Acamind App Icon - Light">
+  <defs>
+    <linearGradient id="fluentBlue" x1="10%" y1="90%" x2="90%" y2="10%">
+      <stop offset="0%" stop-color="#0942B4"/>
+      <stop offset="45%" stop-color="#0B75E6"/>
+      <stop offset="100%" stop-color="#16C8F2"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="#FFFFFF"/>
+  <rect x="1" y="1" width="118" height="118" rx="27" fill="none" stroke="#F1F5F9" stroke-width="2"/>
+  <g transform="translate(-12, -14.4) scale(2.25)">
+    <path fill="url(#fluentBlue)" d="M45.58 49.68a4 4 0 0 1-5.25-2.1L38.79 44H36a4 4 0 0 1-.61-7.94L32 28.15 23.68 47.58a4 4 0 1 1-7.35-3.15l12-28a4 4 0 0 1 7.35 0l9.43 22v0l2.56 6a4 4 0 0 1-2.09 5.25Z"/>
+  </g>
+  <path fill="url(#fluentBlue)" d="M 86 22 Q 86 30 78 30 Q 86 30 86 38 Q 86 30 94 30 Q 86 30 86 22 Z"/>
+</svg>
